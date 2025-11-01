@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t dish-hash/weather-app:latest ./app'
+                    sh 'docker build -t disha47888/weather-app:latest ./app'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker push dish-hash/weather-app:latest'
+                        sh 'docker push disha47888/weather-app:latest'
                     }
                 }
             }
